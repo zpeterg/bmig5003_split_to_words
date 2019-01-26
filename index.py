@@ -1,6 +1,7 @@
 import sys
 from getFile import getFile
 from walkArray import WalkArray
+from format import formatToLines
 
 def dealArgs(args):
     rtn = {
@@ -31,6 +32,10 @@ def getAndFilter(args):
 
 
 if __name__ == '__main__':
-    for word in getAndFilter(sys.argv):
+    args = sys.argv
+    words = getAndFilter(args)
+    if '-f' in args:
+        words = formatToLines(words)
+    for word in words:
         print(word)
 
