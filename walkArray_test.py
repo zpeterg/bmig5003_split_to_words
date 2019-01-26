@@ -79,7 +79,6 @@ class WalkArrayTest(unittest.TestCase):
         w.filter()
         self.assertEqual(w.words, res)
 
-
 if __name__ == '__main__':
     unittest.main()
 

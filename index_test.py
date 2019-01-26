@@ -1,4 +1,5 @@
 import unittest
+from time import time
 from index import dealArgs, getAndFilter
 
 options = {'start': 'foo', 'stop': 'bar', 'finish': 'enough'}
@@ -41,6 +42,19 @@ class GetAndFilterTest(unittest.TestCase):
             'finish': 'enough',
         }
         self.assertEqual(res, dealArgs(args))
+
+    def test_speed_with_moby(self):
+        t0 = time()
+        mobyArgs= [
+            '-file=moby_test.txt',
+            '-start=whale',
+            '-stop=mast',
+            '-finish=ffff9999',
+        ]
+        self.assertGreater(207000, len(getAndFilter(mobyArgs)))
+        t1 = time()
+        print('Moby total get & parse time sec:', t1 - t0)
+
 
     def test_get_and_filter_simple(self):
         res = [
